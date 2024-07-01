@@ -99,7 +99,7 @@ function CrearQr({ userId }) {
           data : inputValue,
           nombre_ref,
           description,
-          created_by: localStorage.getItem('tandemId')
+          created_by: localStorage.getItem('tandem_id')
         })
       });
       const code = await response.json();

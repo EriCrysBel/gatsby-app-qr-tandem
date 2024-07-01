@@ -8,17 +8,13 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
 } from 'reactstrap';
 import "./NavbarTandem.css";
-import ModalSoporte from './ModalSoporte'; // Asegúrate de tener la importación correcta
+import CerrarSesion from './CerrarSesion'; // Asegúrate de ajustar la ruta según tu estructura de archivos
 
 function NavbarTandem(args) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => setModal(!modal);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -37,7 +33,7 @@ function NavbarTandem(args) {
     <div>
       <Navbar color="dark" dark expand="md" >
         <NavbarBrand href="/">
-          <StaticImage src='../images/logoblanco.png' alt="Logo" width={100}  />
+          <StaticImage src='../images/logoblanco.png' alt="Logo" width={100} />
         </NavbarBrand>
         {isMobile ? (
           <>
@@ -53,9 +49,12 @@ function NavbarTandem(args) {
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#" onClick={toggleModal} className='navlink'>
+                  <NavLink href="/" className='navlink'>
                     SOPORTE TÉCNICO
                   </NavLink>
+                </NavItem>
+                <NavItem>
+                  <CerrarSesion />
                 </NavItem>
               </Nav>
             </Collapse>
@@ -71,14 +70,16 @@ function NavbarTandem(args) {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" onClick={toggleModal} className='navlink'>
+              <NavLink href="/" className='navlink'>
                 SOPORTE TÉCNICO
               </NavLink>
+            </NavItem>
+            <NavItem>
+              <CerrarSesion />
             </NavItem>
           </Nav>
         )}
       </Navbar>
-      <ModalSoporte modal={modal} toggleModal={toggleModal} />
     </div>
   );
 }
